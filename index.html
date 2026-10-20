@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- no-referrer header thumbnails ko bina block hue display karne ke liye zaroori hai -->
   <meta name="referrer" content="no-referrer" />
-  <title>PulseStream — Ad-Free Video, Music &amp; Live Lyrics</title>
+  <title>PulseStream — Fast, Ad-Free Music &amp; Video Engine</title>
   <link rel="stylesheet" href="style.css" />
+  <!-- Official YouTube IFrame Player Engine -->
+  <script src="https://www.youtube.com/iframe_api"></script>
 </head>
 <body>
 
@@ -18,45 +19,44 @@
     </div>
 
     <form id="search-form" class="search-box">
-      <input type="text" id="search-input" placeholder="Search songs, artists, videos..." required autocomplete="off" />
+      <input type="text" id="search-input" placeholder="Search songs, artists, Punjabi, Hindi..." required autocomplete="off" />
       <button type="submit" id="search-btn">Search</button>
     </form>
 
     <div class="header-tags">
       <span class="pill-badge">Ad-Free</span>
-      <span class="pill-badge" style="border-color: #f59e0b; color: #f59e0b;">Free Premium</span>
+      <span class="pill-badge" style="border-color: #f59e0b; color: #f59e0b;">Clean Sound</span>
     </div>
   </header>
 
   <main class="app-container">
 
-    <!-- Active Player Desk -->
+    <!-- Active High-Performance Player Desk -->
     <section id="player-desk" class="player-desk hidden">
-      <div class="video-wrapper" id="video-wrapper-box">
-        <!-- Native video element for stream playback with sound -->
-        <video id="native-video-player" controls autoplay playsinline preload="auto"></video>
+      <div class="video-wrapper">
+        <div id="yt-player-container"></div>
       </div>
 
       <div class="media-controls-deck">
         <div class="media-meta">
-          <h2 id="current-title">Loading track...</h2>
+          <h2 id="current-title">Select a track</h2>
           <p id="current-uploader" class="text-muted">Channel</p>
         </div>
 
         <div class="action-buttons">
           <button type="button" id="btn-toggle-audio-mode" class="btn btn-outline">🎵 Audio Only Mode</button>
-          <a id="btn-download-media" class="btn btn-gold" href="#" target="_blank" download="media.mp4">⬇ Download to Storage</a>
+          <a id="btn-download-media" class="btn btn-gold" href="#" target="_blank">⬇ Download File</a>
         </div>
       </div>
 
-      <!-- Real-time Synchronized Lyrics Panel -->
+      <!-- Live Synced Lyrics -->
       <div class="lyrics-card">
         <div class="lyrics-header">
           <h3>Live Lyrics</h3>
           <span id="lyrics-status" class="text-muted text-sm">Waiting for playback...</span>
         </div>
         <div id="lyrics-container" class="lyrics-content">
-          <p class="placeholder-text">Play a song to load lyrics automatically.</p>
+          <p class="placeholder-text">Play any song to auto-fetch lyrics.</p>
         </div>
       </div>
     </section>
@@ -64,12 +64,12 @@
     <!-- Content Feed Section -->
     <section class="content-feed">
       <div class="feed-header">
-        <h3 id="feed-title">Trending Music &amp; Videos</h3>
-        <span id="feed-status" class="text-muted text-sm">Connecting to stream engine...</span>
+        <h3 id="feed-title">Recommended Hits &amp; Music</h3>
+        <span id="feed-status" class="text-muted text-sm"></span>
       </div>
 
       <div id="video-grid" class="video-grid">
-        <p class="empty-state">Loading trending content, please wait...</p>
+        <p class="empty-state">Loading tracks...</p>
       </div>
     </section>
 
