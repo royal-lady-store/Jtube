@@ -3,14 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PulseStream — Ad-Free Video, Music &amp; Lyrics</title>
+  <!-- no-referrer header thumbnails ko bina block hue display karne ke liye zaroori hai -->
+  <meta name="referrer" content="no-referrer" />
+  <title>PulseStream — Ad-Free Video, Music &amp; Live Lyrics</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
   <!-- Top Header Navigation -->
   <header class="top-header">
-    <div class="brand">
+    <div class="brand" id="brand-home" style="cursor: pointer;">
       <span class="brand-icon">▶</span>
       <span class="brand-name">PulseStream</span>
     </div>
@@ -22,7 +24,7 @@
 
     <div class="header-tags">
       <span class="pill-badge">Ad-Free</span>
-      <span class="pill-badge">Free Premium</span>
+      <span class="pill-badge" style="border-color: #f59e0b; color: #f59e0b;">Free Premium</span>
     </div>
   </header>
 
@@ -30,19 +32,20 @@
 
     <!-- Active Player Desk -->
     <section id="player-desk" class="player-desk hidden">
-      <div class="video-wrapper">
-        <video id="native-video-player" controls autoplay playsinline></video>
+      <div class="video-wrapper" id="video-wrapper-box">
+        <!-- Native video element for stream playback with sound -->
+        <video id="native-video-player" controls autoplay playsinline preload="auto"></video>
       </div>
 
       <div class="media-controls-deck">
         <div class="media-meta">
-          <h2 id="current-title">Select a video or track</h2>
+          <h2 id="current-title">Loading track...</h2>
           <p id="current-uploader" class="text-muted">Channel</p>
         </div>
 
         <div class="action-buttons">
           <button type="button" id="btn-toggle-audio-mode" class="btn btn-outline">🎵 Audio Only Mode</button>
-          <a id="btn-download-media" class="btn btn-gold" href="#" target="_blank" download="media.mp4">⬇ Download to Local Storage</a>
+          <a id="btn-download-media" class="btn btn-gold" href="#" target="_blank" download="media.mp4">⬇ Download to Storage</a>
         </div>
       </div>
 
@@ -50,7 +53,7 @@
       <div class="lyrics-card">
         <div class="lyrics-header">
           <h3>Live Lyrics</h3>
-          <span id="lyrics-status" class="text-muted text-sm">Searching lyrics...</span>
+          <span id="lyrics-status" class="text-muted text-sm">Waiting for playback...</span>
         </div>
         <div id="lyrics-container" class="lyrics-content">
           <p class="placeholder-text">Play a song to load lyrics automatically.</p>
@@ -61,12 +64,12 @@
     <!-- Content Feed Section -->
     <section class="content-feed">
       <div class="feed-header">
-        <h3 id="feed-title">Trending Now</h3>
-        <span id="feed-status" class="text-muted text-sm"></span>
+        <h3 id="feed-title">Trending Music &amp; Videos</h3>
+        <span id="feed-status" class="text-muted text-sm">Connecting to stream engine...</span>
       </div>
 
       <div id="video-grid" class="video-grid">
-        <!-- Live videos rendered automatically -->
+        <p class="empty-state">Loading trending content, please wait...</p>
       </div>
     </section>
 
